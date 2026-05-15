@@ -1,6 +1,7 @@
 openai
 pandas
 streamlit
+streamlit-option-menu
 python-dotenv
 requests
 beautifulsoup4
