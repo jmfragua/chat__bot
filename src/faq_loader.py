@@ -26,10 +26,49 @@ class FAQLoader:
         self.load_faqs()
 
     def load_faqs(self) -> None:
-        """Carga las FAQs desde el Excel y las estructura en memoria."""
-        if not self.excel_path.exists():
-            raise FileNotFoundError(f"Archivo no encontrado: {self.excel_path}")
+        """Carga las FAQs desde JSON (preferente) o desde Excel."""
+        json_path = Path("faqs.json")
 
+        # Intentar cargar desde JSON primero
+        if json_path.exists():
+            self._load_from_json(json_path)
+        elif self.excel_path.exists():
+            self._load_from_excel()
+        else:
+            raise FileNotFoundError(f"No se encontró {json_path} ni {self.excel_path}")
+
+    def _load_from_json(self, json_path: Path) -> None:
+        """Carga FAQs desde archivo JSON."""
+        with open(json_path, 'r', encoding='utf-8') as f:
+            faqs_data = json.load(f)
+
+        faq_id = 1
+        for item in faqs_data:
+            categoria = item.get('categoria', 'General')
+            pregunta = item.get('pregunta', '').strip()
+            respuesta = item.get('respuesta', '').strip()
+
+            if not pregunta or not respuesta:
+                continue
+
+            faq = {
+                'id': faq_id,
+                'pregunta': pregunta,
+                'respuesta': respuesta,
+                'categoria': categoria,
+                'palabras_clave': self._extract_keywords(pregunta)
+            }
+
+            faq_id += 1
+            self.all_faqs_flat.append(faq)
+            self.faq_index[faq['id']] = faq
+
+            if categoria not in self.faqs_by_category:
+                self.faqs_by_category[categoria] = []
+            self.faqs_by_category[categoria].append(faq)
+
+    def _load_from_excel(self) -> None:
+        """Carga FAQs desde Excel (fallback)."""
         df = pd.read_excel(self.excel_path)
 
         # Validar columnas requeridas
