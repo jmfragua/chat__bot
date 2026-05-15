@@ -56,7 +56,7 @@ def buscar_respuesta(pregunta_usuario: str) -> tuple[str, str]:
             mejor_puntuacion = puntuacion
             mejor_faq = faq
 
-    if not mejor_faq:
+    if mejor_puntuacion == 0 or not mejor_faq:
         return (
             "No tengo una respuesta exacta para esa consulta. "
             "Prueba con una pregunta sobre nómina o contratación.",
@@ -74,7 +74,7 @@ def main() -> None:
 
     total_faqs = len(FAQS)
     total_nomina = sum(1 for faq in FAQS if faq["categoria"] == "Nómina")
-    total_contratacion = total_faqs - total_nomina
+    total_contratacion = sum(1 for faq in FAQS if faq["categoria"] == "Contratación")
 
     col1, col2, col3 = st.columns(3)
     col1.metric("FAQs totales", total_faqs)
