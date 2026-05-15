@@ -296,8 +296,6 @@ def main():
 
     # Mostrar historial de mensajes (solo si hay mensajes)
     if st.session_state.messages:
-        st.markdown("### 💬 Conversación")
-
         chat_container = st.container()
 
         with chat_container:
