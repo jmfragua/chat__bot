@@ -296,30 +296,25 @@ def main():
 
     # Mostrar historial de mensajes (solo si hay mensajes)
     if st.session_state.messages:
-        chat_container = st.container()
-
-        with chat_container:
-            st.markdown('<div class="chat-container">', unsafe_allow_html=True)
-            for message in st.session_state.messages:
-                if message['role'] == 'user':
-                    col1, col2 = st.columns([1, 10])
-                    with col1:
-                        st.markdown("👤")
-                    with col2:
-                        st.markdown(
-                            f"<div class='message-user'>{message['content']}</div>",
-                            unsafe_allow_html=True
-                        )
-                else:
-                    col1, col2 = st.columns([1, 10])
-                    with col1:
-                        st.markdown("🤖")
-                    with col2:
-                        st.markdown(
-                            f"<div class='message-bot'>{message['content']}</div>",
-                            unsafe_allow_html=True
-                        )
-            st.markdown('</div>', unsafe_allow_html=True)
+        for message in st.session_state.messages:
+            if message['role'] == 'user':
+                col1, col2 = st.columns([1, 10])
+                with col1:
+                    st.markdown("👤")
+                with col2:
+                    st.markdown(
+                        f"<div class='message-user'>{message['content']}</div>",
+                        unsafe_allow_html=True
+                    )
+            else:
+                col1, col2 = st.columns([1, 10])
+                with col1:
+                    st.markdown("🤖")
+                with col2:
+                    st.markdown(
+                        f"<div class='message-bot'>{message['content']}</div>",
+                        unsafe_allow_html=True
+                    )
 
     # Formulario de entrada
     st.markdown("---")
