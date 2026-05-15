@@ -144,7 +144,8 @@ class ChatbotEngine:
             return result
 
         # Validar respuesta
-        status, validation_msg = self.validator.validate_response(respuesta_llm)
+        categoria_top = faqs_relevantes[0][0]['categoria']
+        status, validation_msg = self.validator.validate_response(respuesta_llm, categoria_top, pregunta)
 
         if status == ResponseStatus.SENSITIVE_DATA:
             result = {
@@ -158,15 +159,28 @@ class ChatbotEngine:
             self.conversation_log.append(result)
             return result
 
-        # Extraer categoría de la FAQ más relevante
-        categoria_top = faqs_relevantes[0][0]['categoria']
-        confianza = faqs_relevantes[0][1]
+        if status == ResponseStatus.INVALID_FORMAT:
+            result = {
+                'exito': False,
+                'respuesta': "⚠️ No puedo procesar esa respuesta. Por favor intenta de nuevo.",
+                'categoria': None,
+                'confianza': 0.0,
+                'fuente': 'validacion_formato',
+                'is_error': False
+            }
+            self.conversation_log.append(result)
+            return result
 
         # Formatear respuesta con referencia
         respuesta_final = self.validator.format_faq_response(respuesta_llm, categoria_top)
 
         # Verificar tono
         tono_ok, tono_msg = self.validator.get_tone_check(respuesta_final)
+
+        # Calcular confianza mejorada
+        faq_score = faqs_relevantes[0][1]
+        confidence_score = self.validator.get_confidence_score(respuesta_final, categoria_match=True)
+        confianza = (faq_score + confidence_score) / 2
 
         result = {
             'exito': True,
