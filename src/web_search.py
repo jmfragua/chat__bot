@@ -5,7 +5,6 @@ Solo permite búsquedas en dominios permitidos (mintrabajo.gov.co, ugpp.gov.co, 
 
 import requests
 from typing import Dict, List, Optional, Tuple
-from bs4 import BeautifulSoup
 import re
 
 
