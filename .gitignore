@@ -1,0 +1,71 @@
+# Entorno virtual
+venv/
+env/
+ENV/
+.venv
+
+# Variables de entorno sensibles
+.env
+.env.local
+.env.*.local
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Datos y Logs
+data/chat_logs.db
+data/faqs.json
+*.db
+*.log
+
+# Resultados de tests
+evaluation_results.json
+.pytest_cache/
+htmlcov/
+
+# Archivos temporales de Streamlit
+.streamlit/
+
+# Videos y archivos de demostración
+*.mov
+*.mp4
+demo_video.py
+chatbot_demo.mov
+test_video.mov
+
+# Archivos del sistema macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Archivos temporales
+*.tmp
+temp/
+.tmp/
