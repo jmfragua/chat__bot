@@ -1,0 +1,147 @@
+[
+  {
+    "categoria": "General",
+    "pregunta": "¿Cómo puedo recuperar mi usuario o contraseña en MiNómina?",
+    "respuesta": "Puedes recuperar tu usuario o contraseña ingresando a MiNómina > Inicio de sesión > ¿Olvidaste tu contraseña? y siguiendo los pasos indicados."
+  },
+  {
+    "categoria": "General",
+    "pregunta": "¿Cuáles son los requisitos para retirar mis cesantías?",
+    "respuesta": "Para retirar tus cesantías debes presentar los siguientes documentos: cédula de ciudadanía, certificado laboral, carta de solicitud al fondo, y soporte del motivo (compra de vivienda, estudio o terminación de contrato)."
+  },
+  {
+    "categoria": "General",
+    "pregunta": "¿Por qué en la segunda quincena recibí un pago menor?",
+    "respuesta": "La segunda quincena puede variar según el número de días del mes. En meses de 31 días se pagan 16 días; en otros meses, 13 o 14."
+  },
+  {
+    "categoria": "Nómina y Pagos",
+    "pregunta": "¿Por qué no recibí el auxilio de transporte o se pagó incompleto?",
+    "respuesta": "El auxilio de transporte se paga solo a empleados con salario base hasta 2 SMMLV. Ausencias o licencias pueden afectar el valor recibido."
+  },
+  {
+    "categoria": "Beneficios",
+    "pregunta": "¿Cuándo se paga el auxilio de transporte?",
+    "respuesta": "El auxilio de transporte se paga junto con la segunda quincena de cada mes."
+  },
+  {
+    "categoria": "Vacaciones y Licencias",
+    "pregunta": "¿Se cobran los consumos de restaurante durante las vacaciones?",
+    "respuesta": "Los consumos de restaurante se cobran según la fecha de corte. Si estabas en vacaciones, los consumos previos pueden reflejarse en la siguiente quincena."
+  },
+  {
+    "categoria": "General",
+    "pregunta": "¿Cuándo se paga el quinquenio?",
+    "respuesta": "El pago del quinquenio se realiza en la quincena siguiente a la fecha de cumplimiento del período laboral de cinco años."
+  },
+  {
+    "categoria": "General",
+    "pregunta": "¿Por qué no me pagaron mi nómina?",
+    "respuesta": "La empresa tiene fechas de corte para esta novedad, es decir, las horas extras realizadas del 21 al 5 se pagan en la primera quincena, las horas extras realizadas del 6 al 20, se pagan en la segunda quincena"
+  },
+  {
+    "categoria": "Certificaciones",
+    "pregunta": "¿Cómo puedo solicitar una certificación o carta laboral?",
+    "respuesta": "Ingresa a GestioTH > Certificaciones > Nueva solicitud. Completa los datos requeridos y descarga tu certificación en PDF."
+  },
+  {
+    "categoria": "Nómina y Pagos",
+    "pregunta": "¿Cómo puedo descargar mis comprobantes o colillas de pago?",
+    "respuesta": "Puedes consultar tus colillas en MiNómina > Mis Comprobantes > Descarga. Allí podrás ver y exportar tus pagos."
+  },
+  {
+    "categoria": "General",
+    "pregunta": "¿Por qué me descuentan salud y pensión?",
+    "respuesta": "Los descuentos de salud y pensión corresponden al 4% de tu salario para cada concepto, según la normatividad vigente."
+  },
+  {
+    "categoria": "General",
+    "pregunta": "¿Por qué me cobran aporte de solidaridad?",
+    "respuesta": "El minómina de solidaridad es contribución de carácter obligatorio, que exige el estado minómina cuando sus ingresos en el mes superan los 4smmlv"
+  },
+  {
+    "categoria": "Vacaciones y Licencias",
+    "pregunta": "¿Cuándo se pagan las incapacidades cortas (uno o dos días)?",
+    "respuesta": "Las incapacidades de uno o dos días se pagan junto con la nómina correspondiente, una vez son registradas y validadas por Talento Humano."
+  },
+  {
+    "categoria": "Nómina y Pagos",
+    "pregunta": "¿Cómo reporto una novedad de descuento o préstamo?",
+    "respuesta": "Diligencia el formulario en minómina > novedades > descuentos. adjunta soporte y envía. el área de nómina lo validará en máximo 2 días hábiles."
+  },
+  {
+    "categoria": "Contratación",
+    "pregunta": "¿Qué documentos necesito para mi vinculación?",
+    "respuesta": "Debes cargar cédula, certificaciones, rut y datos bancarios en minómina > vinculación. el sistema te indicará los formatos faltantes."
+  },
+  {
+    "categoria": "Beneficios",
+    "pregunta": "¿Cuáles son los beneficios vigentes y cómo acceder?",
+    "respuesta": "Consulta el catálogo en minómina > beneficios. cada beneficio indica requisitos y el paso a paso para redimir."
+  },
+  {
+    "categoria": "Seguridad Social",
+    "pregunta": "¿Cómo actualizar mi EPS o fondo de pensiones?",
+    "respuesta": "Ingresa a minómina > datos personales > seguridad social. actualiza eps/afp y adjunta soporte. el cambio aplica en el siguiente corte."
+  },
+  {
+    "categoria": "Jornada y Modalidades",
+    "pregunta": "¿Cómo registrar trabajo remoto o cambios de turno?",
+    "respuesta": "Desde minómina > tiempo > modalidad selecciona 'remoto' o 'cambio de turno', indica fechas y justificación. tu líder valida la solicitud."
+  },
+  {
+    "categoria": "General",
+    "pregunta": "¿A dónde escalo si el asistente no resuelve mi duda?",
+    "respuesta": "Escribe a [correo@empresa] con asunto 'escalamiento chatbot' y el id de conversación. responderemos en 1 día hábil."
+  },
+  {
+    "categoria": "General",
+    "pregunta": "¿Cuál es el salario mínimo vigente en Colombia?",
+    "respuesta": "El salario mínimo cambia cada año según decreto del Gobierno Nacional. Consulta el valor actualizado en el portal del Ministerio de Trabajo."
+  },
+  {
+    "categoria": "General",
+    "pregunta": "¿Qué debo hacer si no encuentro mi EPS registrada?",
+    "respuesta": "Puedes verificar tu EPS en el portal de Mi Seguridad Social o contactar al área de Talento Humano para revisar el registro."
+  },
+  {
+    "categoria": "Nómina y Pagos",
+    "pregunta": "¿Qué significa 'ingreso no salarial' en mi colilla de pago?",
+    "respuesta": "Son valores adicionales que no hacen parte del salario base, como bonificaciones o auxilios, y no afectan los aportes a seguridad social."
+  },
+  {
+    "categoria": "Nómina y Pagos",
+    "pregunta": "¿Qué hago si mi pago no aparece reflejado en el banco?",
+    "respuesta": "Valida primero con tu entidad bancaria si el pago está en proceso. Si no se refleja, contacta a Talento Humano con el comprobante de pago."
+  },
+  {
+    "categoria": "Contratación",
+    "pregunta": "¿Qué documentos necesito para firmar un nuevo contrato?",
+    "respuesta": "Debes presentar tu cédula, certificados laborales, RUT y datos bancarios. Todos deben cargarse en GestioTH durante el proceso de vinculación."
+  },
+  {
+    "categoria": "Vacaciones y Licencias",
+    "pregunta": "¿Puedo dividir mis vacaciones en varios periodos?",
+    "respuesta": "Sí, siempre que exista acuerdo con tu líder y se cumpla la política interna. Solicítalo a través de GestioTH en la opción Vacaciones."
+  },
+  {
+    "categoria": "Certificaciones",
+    "pregunta": "¿Puedo solicitar mi certificación laboral en otro idioma?",
+    "respuesta": "Sí, puedes solicitarla en GestioTH seleccionando la opción 'Certificación en inglés' o indicando el idioma en la solicitud."
+  },
+  {
+    "categoria": "Beneficios",
+    "pregunta": "¿Cómo puedo acceder a los convenios o descuentos para empleados?",
+    "respuesta": "Ingresa a GestioTH > Beneficios > Convenios para consultar los aliados activos y los pasos para redimir cada beneficio."
+  },
+  {
+    "categoria": "Seguridad Social",
+    "pregunta": "¿Cómo puedo actualizar mi fondo de pensiones?",
+    "respuesta": "Ingresa a MiNómina > Seguridad Social > Actualizar fondo. Adjunta los documentos y espera la confirmación por correo."
+  },
+  {
+    "categoria": "General",
+    "pregunta": "¿Qué hago si el chatbot no resuelve mi duda?",
+    "respuesta": "Puedes escalar tu caso escribiendo a soporte@compania.com con el tema y tu número de identificación."
+  }
+]
