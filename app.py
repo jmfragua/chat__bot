@@ -246,21 +246,32 @@ def main():
                     st.markdown(f"**{len(faqs_categoria)} preguntas disponibles**\n")
 
                     for idx, faq in enumerate(faqs_categoria, 1):
-                        col_pregunta, col_copiar = st.columns([4, 1])
+                        col_pregunta, col_enviar = st.columns([4, 1])
 
                         with col_pregunta:
                             st.markdown(f"{idx}. {faq['pregunta']}")
 
-                        with col_copiar:
-                            if st.button("📋", key=f"copy_{faq['id']}", help="Copiar pregunta"):
-                                # Usar pyperclip o alternativa para copiar
-                                try:
-                                    import subprocess
-                                    process = subprocess.Popen(['pbcopy'], stdin=subprocess.PIPE)
-                                    process.communicate(faq['pregunta'].encode('utf-8'))
-                                    st.toast("✓ Pregunta copiada al portapapeles", icon="✅")
-                                except:
-                                    st.info("📋 Pregunta: " + faq['pregunta'])
+                        with col_enviar:
+                            if st.button("➡️", key=f"send_{faq['id']}", help="Enviar pregunta"):
+                                st.session_state.messages.append({'role': 'user', 'content': faq['pregunta']})
+                                with st.spinner("🤔 Procesando tu pregunta..."):
+                                    resultado = chatbot.process_question(faq['pregunta'])
+                                    respuesta = resultado['respuesta']
+                                    categoria = resultado.get('categoria', 'N/A')
+                                    confianza = resultado.get('confianza', 0)
+                                    exito = resultado.get('exito', False)
+
+                                    logger.log_interaction(
+                                        st.session_state.session_id,
+                                        faq['pregunta'],
+                                        respuesta,
+                                        categoria,
+                                        confianza,
+                                        exito
+                                    )
+
+                                st.session_state.messages.append({'role': 'assistant', 'content': respuesta})
+                                st.rerun()
                 else:
                     st.info("No hay preguntas en esta categoría")
 
