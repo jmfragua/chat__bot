@@ -83,10 +83,16 @@ class ChatbotEngine:
             self.conversation_log.append(result)
             return result
 
+        # PRIORIZAR búsqueda web para palabras clave importantes
+        # (salario mínimo, UVT, datos actualizados)
+        palabras_clave_web = ['salario mínimo', 'uvt', 'smmlv']
+        debe_priorizar_web = any(keyword in pregunta.lower() for keyword in palabras_clave_web)
+
         # Verificar si debe buscar en web
         debe_buscar_web, dominio = self.web_search.should_search_web(pregunta)
 
-        if debe_buscar_web:
+        # Si hay palabras clave o detecta trigger, intentar búsqueda web PRIMERO
+        if (debe_buscar_web or debe_priorizar_web):
             # Intentar búsqueda web
             resultado_web = self.web_search.search(pregunta, dominio)
 
@@ -102,6 +108,7 @@ class ChatbotEngine:
                 }
                 self.conversation_log.append(result)
                 return result
+            # Si la búsqueda web falla, continúa a FAQs
 
         # Buscar FAQs relevantes
         faqs_relevantes = self.faq_loader.search_faqs(pregunta, top_k=5)
