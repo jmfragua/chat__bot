@@ -209,7 +209,7 @@ class GuardrailValidator:
             if indicator in respuesta_lower:
                 count += 1
 
-        return count >= 2
+        return count >= 4
 
     def _check_coherence(self, pregunta: str, respuesta: str) -> bool:
         """Verifica coherencia simple entre pregunta y respuesta."""
@@ -222,7 +222,7 @@ class GuardrailValidator:
         overlap = len(pregunta_words & respuesta_words)
         coverage = overlap / len(pregunta_words) if pregunta_words else 0
 
-        return coverage >= 0.2
+        return coverage >= 0.1
 
     def _extract_key_words(self, texto: str) -> List[str]:
         """Extrae palabras clave de un texto."""
