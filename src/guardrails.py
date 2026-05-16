@@ -31,11 +31,10 @@ class GuardrailValidator:
 
     # Patrones de datos sensibles a detectar
     SENSITIVE_PATTERNS = {
-        'email': r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}',
+        'email': r'\b[a-zA-Z0-9._%+-]+@(?!gmail|hotmail|yahoo|outlook)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}',  # Solo no-públicos
         'phone': r'\+?[\d\s\-()]{10,}',
         'cc': r'\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}',  # Número de tarjeta
-        'account': r'cuenta\s*[:\-]?\s*\d+',
-        'salary': r'salario|sueldo\s*[:\-]?\s*[\$\d.,]+'
+        'account': r'(?:cuenta|cuenta bancaria|número de cuenta)\s*[:\-]?\s*\d{8,}',  # Solo números de 8+ dígitos
     }
 
     def __init__(self, categorias_disponibles: List[str]):
