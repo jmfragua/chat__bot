@@ -69,6 +69,7 @@ class GuardrailValidator:
     def validate_question(self, pregunta: str, user_id: str = None) -> Tuple[bool, str]:
         """
         Valida una pregunta del usuario.
+        Guardrails enfocados en SEGURIDAD (no en restricción de contenido).
 
         Args:
             pregunta: La pregunta a validar
@@ -79,22 +80,22 @@ class GuardrailValidator:
         """
         pregunta = pregunta.strip()
 
-        # Validar longitud
+        # 1. Validar longitud
         if len(pregunta) < self.min_pregunta_length:
             return False, "Pregunta muy corta. Por favor, sé más específico."
 
         if len(pregunta) > self.max_pregunta_length:
             return False, f"Pregunta muy larga (máximo {self.max_pregunta_length} caracteres)."
 
-        # Validar que no esté vacía después de limpiar
+        # 2. Validar que no esté vacía después de limpiar
         if not pregunta.replace('?', '').replace('¿', '').strip():
             return False, "Pregunta no válida. Por favor intenta de nuevo."
 
-        # Detectar inyección de prompts
+        # 3. Detectar inyección de prompts (CRÍTICO - previene manipulación)
         if self.detect_prompt_injection(pregunta):
             return False, "La pregunta parece contener instrucciones maliciosas. Por favor, intenta de nuevo."
 
-        # Rate limiting
+        # 4. Rate limiting (CRÍTICO - previene abuso)
         if user_id and not self._check_rate_limit(user_id):
             return False, "Estás haciendo demasiadas preguntas. Por favor, espera un momento."
 
@@ -163,6 +164,12 @@ class GuardrailValidator:
         """
         Valida una respuesta del chatbot.
 
+        FILOSOFÍA v1.2: Guardrails inteligentes
+        - Las respuestas vienen del Excel (FAQs públicas y validadas)
+        - NO validamos datos sensibles, alucinaciones o coherencia en respuestas
+        - SOLO validamos formato básico (no vacías, >10 caracteres)
+        - Los guardrails CRÍTICOS (inyección, rate limit) están en PREGUNTAS
+
         Args:
             respuesta: La respuesta a validar
             categoria: Categoría de la FAQ de donde viene la respuesta
@@ -171,7 +178,7 @@ class GuardrailValidator:
         Returns:
             Tupla (estado, mensaje_detalle)
         """
-        # Validar formato básico
+        # Validar formato básico (MÍNIMO - solo lo esencial)
         if not respuesta or not isinstance(respuesta, str):
             return ResponseStatus.INVALID_FORMAT, "Respuesta con formato inválido."
 
@@ -179,19 +186,6 @@ class GuardrailValidator:
 
         if len(respuesta) < 10:
             return ResponseStatus.INVALID_FORMAT, "Respuesta muy corta."
-
-        # Detectar datos sensibles (DESACTIVADO TEMPORALMENTE - FAQ son seguras)
-        # tiene_sensibles, tipos = self.detect_sensitive_data(respuesta)
-        # if tiene_sensibles:
-        #     return ResponseStatus.SENSITIVE_DATA, f"Datos sensibles detectados: {', '.join(tipos)}"
-
-        # Detectar alucinaciones (DESACTIVADO TEMPORALMENTE - DEBUG)
-        # if self.detect_hallucinations(respuesta):
-        #     return ResponseStatus.INVALID_FORMAT, "Respuesta con indicadores de alucinación detectados."
-
-        # Verificar coherencia con pregunta (DESACTIVADO TEMPORALMENTE - DEBUG)
-        # if pregunta and not self._check_coherence(pregunta, respuesta):
-        #     return ResponseStatus.INVALID_FORMAT, "Respuesta incoherente con la pregunta."
 
         # Validar que tenga referencia a categoría
         if categoria and f"[Fuente:" not in respuesta:
